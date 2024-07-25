@@ -1,0 +1,15 @@
+body {
+    background-color: rgb(181, 185, 189);
+  }
+ .container-fluid{
+      background-color:rgb(217, 255, 0); 
+  }
+  h2{
+    color: rgb(0, 0, 0);
+    text-align:justify;
+  }
+  
+  p {
+    font-family: verdana;
+    font-size: 20px;
+  }
