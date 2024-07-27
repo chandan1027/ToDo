@@ -1,0 +1,159 @@
+/* Custom CSS for the Todo Application */
+
+/* Container customization */
+.container {
+    max-width: 960px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form label styling */
+  .form-label {
+    font-weight: bold;
+    color: #343a40;
+  }
+  
+  /* Input fields styling */
+  .form-control {
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+  }
+  
+  /* Button styling */
+  .btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .btn-dark:hover {
+    background-color: #23272b;
+    border-color: #1d2124;
+  }
+  
+  .btn-outline-dark {
+    border-color: #343a40;
+    color: #343a40;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .btn-outline-dark:hover {
+    background-color: #343a40;
+    color: #fff;
+    border-color: #343a40;
+  }
+  
+  /* Table customization */
+  .table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table th, .table td {
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+  }
+  
+  .table thead th {
+    background-color: #343a40;
+    color: #fff;
+  }
+  
+  .table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #e9ecef;
+  }
+  
+  /* Alert box styling */
+  .alert-dark {
+    background-color: #343a40;
+    color: #fff;
+    border-radius: 4px;
+  }
+  
+  /* Typography customization */
+  h2 {
+    color: #343a40;
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+    }
+  
+    .form-label {
+      font-size: 14px;
+    }
+  
+    .form-control {
+      font-size: 14px;
+    }
+  
+    .table th, .table td {
+      padding: 10px;
+    }
+  
+    .btn {
+      font-size: 14px;
+      padding: 6px 12px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .form-label {
+      font-size: 12px;
+    }
+  
+    .form-control {
+      font-size: 12px;
+    }
+  
+    .table th, .table td {
+      padding: 8px;
+    }
+  
+    .btn {
+      font-size: 12px;
+      padding: 4px 10px;
+    }
+  
+    /* Adjusting the table for smaller screens */
+    .table thead {
+      display: none;
+    }
+  
+    .table tbody tr {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    .table tbody td {
+      display: block;
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+  
+    .table tbody td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      width: calc(50% - 20px);
+      text-align: left;
+      font-weight: bold;
+    }
+  }
+  
