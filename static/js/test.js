@@ -1,18 +1,12 @@
-
-        function searchTodos() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            const todoTableBody = document.getElementById('todoTableBody');
-            const todos = todoTableBody.getElementsByTagName('tr');
-
-            Array.from(todos).forEach((todo) => {
-                const title = todo.getElementsByClassName('todo-title')[0].innerText.toLowerCase();
-                const desc = todo.getElementsByClassName('todo-desc')[0].innerText.toLowerCase();
-                
-                if (title.includes(searchInput) || desc.includes(searchInput)) {
-                    todo.style.display = '';
-                } else {
-                    todo.style.display = 'none';
-                }
-            });
-        }
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting the default way
+    const query = document.getElementById('searchInput').value;
+    if (query) {
+        alert('Search for: ' + query);
+        // You can replace the alert with the actual search logic, e.g., redirect to a search results page
+        // window.location.href = 'search_results_page.html?query=' + encodeURIComponent(query);
+    } else {
+        alert('Please enter a search term.');
+    }
+});
     
