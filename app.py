@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request , redirect
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # Configure SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Fixed typo
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
@@ -23,37 +23,29 @@ class Todo(db.Model):
         return f"{self.sno} - {self.title}"
 
 # Route for the home page
-@app.route('/', methods=['GET','POST'])
-def hello_world():
-    if request.method=='POST':
-        title= request.form['title']
-        desc=request.form['desc']
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    if request.method == 'POST':
+        title = request.form['title']
+        desc = request.form['desc']
         todo = Todo(title=title, desc=desc)
         db.session.add(todo)
         db.session.commit()
-
     
     allTodo = Todo.query.all()
-    
     return render_template('index.html', allTodo=allTodo)
 
-# @app.route('/show')
-# def products():
-#     allTodo = Todo.query.all()l;
-#     print(allTodo)
-#     return 'Showing Todos'
-
-@app.route('/update/<int:sno>', methods=['GET','POST'])
+@app.route('/update/<int:sno>', methods=['GET', 'POST'])
 def update(sno):
-    if request.method=='POST':
-        title= request.form['title']
-        desc=request.form['desc']
+    if request.method == 'POST':
+        title = request.form['title']
+        desc = request.form['desc']
         todo = Todo.query.filter_by(sno=sno).first()
-        todo.title=title
-        todo.desc=desc
+        todo.title = title
+        todo.desc = desc
         db.session.add(todo)
         db.session.commit()
-        return redirect("/")
+        return redirect(url_for('home'))
     todo = Todo.query.filter_by(sno=sno).first()
     return render_template('update.html', todo=todo)
 
@@ -62,10 +54,10 @@ def delete(sno):
     todo = Todo.query.filter_by(sno=sno).first()
     db.session.delete(todo)
     db.session.commit()
-    return redirect('/')
+    return redirect(url_for('home'))
 
-@app.route('/search', methods=['GET','POST'])
-def search(sno):
+@app.route('/search', methods=['GET'])
+def search():
     query = request.args.get('query')
     results = Todo.query.filter(Todo.title.contains(query) | Todo.desc.contains(query)).all()
     return render_template('index.html', allTodo=results)
