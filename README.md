@@ -34,13 +34,16 @@ Follow these steps to set up and run the application locally.
    cd your-repo
    
 2. Create a Virtual Environment
-   python -m venv venv
+   ```bash
+    python -m venv venv
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
-3. Install Dependencies     
+4. Install Dependencies
+   ```bash     
    pip install -r requirements.txt
 
-4. Run the Application
+6. Run the Application
+   ```bash
    flask run
 
-   The application will be available at http://127.0.0.1:5000.
+   The application will be available at https://todo-l4cz.onrender.com/
