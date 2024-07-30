@@ -9,6 +9,12 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
+  .d-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
   /* Form label styling */
   .form-label {
     font-weight: bold;
